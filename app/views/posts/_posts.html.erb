@@ -1,0 +1,25 @@
+<% if posts %>
+  <div class="row">
+    <% posts.each do |post| %>
+      <div class="post">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              写真
+            </div>
+            <div class="panel-body">
+              <p class="post-title"><%= post.title %></p>
+              <p class="post-ingredient"><%= post.ingredient %></p>
+              <p class="post-content"><%= post.content %></p>
+            </div>
+            <div>
+              <% if current_user == post.user %>
+                <%= link_to "Delete", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

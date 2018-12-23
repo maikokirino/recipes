@@ -1,8 +1,24 @@
-<div class="center jumbotron">
-  <div class="text-center">
-    <h1>お気に入りのレシピを共有しよう！</h1>
+<% if logged_in? %>
+  <div class="text-right">
+    <%= link_to 'レシピを投稿する', posts_path, class: 'btn btn-primary btn-lg' %>
+  </div>
+  <div class="text-left">
+    <p>お気に入りランキング</p>
+  </div>
+  <div class="text-left">
+    <p>レシピ一覧</p>
+  </div>
+  <div class="text-center" >
+    <%= render 'posts/posts', posts: @posts %>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>お気に入りのレシピを共有しよう！</h1>
       <% unless logged_in? %>
         <%= link_to 'Sign up now!', signup_path, class: 'btn btn-primary btn-lg' %>
       <% end %>
+    </div>
   </div>
-</div>
+<% end %>
+
